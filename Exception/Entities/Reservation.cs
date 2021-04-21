@@ -27,14 +27,16 @@ namespace Exception.Entities
             return (int)duration.TotalDays;
         }
 
-        public void UpdateDates(DateTime checkin, DateTime checkout)
+        public void UpdateDates(DateTime checkIn, DateTime checkOut)
         {
-            return;
+            CheckIn = checkIn;
+            CheckOut = checkOut;
         }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append("Reservation: ");
             sb.Append("Room " + RoomNumber + ", ");
             sb.Append("Check-in: " + CheckIn.ToString("dd/MM/yyyy") + ", ");
             sb.Append("Check-out: " + CheckOut.ToString("dd/MM/yyyy") + ", ");
