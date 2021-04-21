@@ -27,10 +27,20 @@ namespace Exception.Entities
             return (int)duration.TotalDays;
         }
 
-        public void UpdateDates(DateTime checkIn, DateTime checkOut)
+        public string UpdateDates(DateTime checkIn, DateTime checkOut)
         {
+            DateTime now = DateTime.Now;
+            if (checkIn < now || checkOut < now)
+            {
+                return "Reservetion dates for updates must be future dates.";
+            }
+            if (checkOut <= checkIn)
+            {
+                return "Check-out must be after check-in.";
+            }
             CheckIn = checkIn;
             CheckOut = checkOut;
+            return null;
         }
 
         public override string ToString()
